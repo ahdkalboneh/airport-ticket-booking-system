@@ -1,0 +1,106 @@
+[
+  {
+    "FlightId": 1,
+    "DepartureCountry": "Palestine",
+    "DestinationCountry": "Turkey",
+    "DepartureDate": "2026-12-15T10:00:00",
+    "DepartureAirport": "Queen Alia International Airport",
+    "ArrivalAirport": "Istanbul Airport",
+    "Prices": {
+      "EconomyClass": 200,
+      "BusinessClass": 500,
+      "FirstClass": 1000
+    }
+  },
+  {
+    "FlightId": 2,
+    "DepartureCountry": "Jordan",
+    "DestinationCountry": "Germany",
+    "DepartureDate": "2026-11-20T14:30:00",
+    "DepartureAirport": "Queen Alia International Airport",
+    "ArrivalAirport": "Frankfurt Airport",
+    "Prices": {
+      "EconomyClass": 350,
+      "BusinessClass": 800,
+      "FirstClass": 1500
+    }
+  },
+  {
+    "FlightId": 3,
+    "DepartureCountry": "Turkey",
+    "DestinationCountry": "Spain",
+    "DepartureDate": "2026-11-25T08:15:00",
+    "DepartureAirport": "Istanbul Airport",
+    "ArrivalAirport": "Madrid-Barajas Airport",
+    "Prices": {
+      "EconomyClass": 180,
+      "BusinessClass": 450,
+      "FirstClass": 900
+    }
+  },
+  {
+    "FlightId": 4,
+    "DepartureCountry": "Egypt",
+    "DestinationCountry": "Saudi Arabia",
+    "DepartureDate": "2026-11-05T22:00:00",
+    "DepartureAirport": "Cairo International Airport",
+    "ArrivalAirport": "King Abdulaziz International Airport",
+    "Prices": {
+      "EconomyClass": 150,
+      "BusinessClass": 400,
+      "FirstClass": 750
+    }
+  },
+  {
+    "FlightId": 5,
+    "DepartureCountry": "Qatar",
+    "DestinationCountry": "Lebanon",
+    "DepartureDate": "2026-12-01T16:45:00",
+    "DepartureAirport": "Hamad International Airport",
+    "ArrivalAirport": "Beirut-Rafic Hariri International Airport",
+    "Prices": {
+      "EconomyClass": 220,
+      "BusinessClass": 550,
+      "FirstClass": 1100
+    }
+  },
+  {
+    "FlightId": 6,
+    "DepartureCountry": "Palestine",
+    "DestinationCountry": "Egypt",
+    "DepartureDate": "2026-12-10T11:30:00",
+    "DepartureAirport": "Queen Alia International Airport",
+    "ArrivalAirport": "Cairo International Airport",
+    "Prices": {
+      "EconomyClass": 120,
+      "BusinessClass": 300,
+      "FirstClass": 600
+    }
+  },
+  {
+    "FlightId": 7,
+    "DepartureCountry": "UAE",
+    "DestinationCountry": "Jordan",
+    "DepartureDate": "2027-01-12T06:00:00",
+    "DepartureAirport": "Dubai International Airport",
+    "ArrivalAirport": "Queen Alia International Airport",
+    "Prices": {
+      "EconomyClass": 190,
+      "BusinessClass": 480,
+      "FirstClass": 950
+    }
+  },
+  {
+    "FlightId": 8,
+    "DepartureCountry": "Saudi Arabia",
+    "DestinationCountry": "Palestine",
+    "DepartureDate": "2026-12-18T19:20:00",
+    "DepartureAirport": "King Khalid International Airport",
+    "ArrivalAirport": "Queen Alia International Airport",
+    "Prices": {
+      "EconomyClass": 160,
+      "BusinessClass": 420,
+      "FirstClass": 850
+    }
+  }
+]
