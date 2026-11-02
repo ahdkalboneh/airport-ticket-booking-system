@@ -54,5 +54,8 @@ public class UserManager
 
         return true;
     }
-
+    public void Logout()
+    {
+        CurrentUser = null;
+    }
 }

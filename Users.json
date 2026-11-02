@@ -4,5 +4,11 @@
     "Name": "ahd kalboneh",
     "Password": "123456",
     "Role": 0
+  },
+  "waleed": {
+    "UserId": 2,
+    "Name": "waleed",
+    "Password": "123",
+    "Role": 0
   }
 }

@@ -2,7 +2,7 @@ using System.Text.Json;
 
 public class JsonFileStorage<T>
 {
-    string Filepath {get;}
+    string Filepath { get; }
 
     public JsonFileStorage(String filepath)
     {
@@ -21,7 +21,7 @@ public class JsonFileStorage<T>
     {
         string data = await File.ReadAllTextAsync(this.Filepath);
         Dictionary<string, T> datas = string.IsNullOrWhiteSpace(data) ? new Dictionary<string, T>()
-                                             : JsonSerializer.Deserialize<Dictionary<string ,T>>(data) ?? new Dictionary<string, T>();
+                                             : JsonSerializer.Deserialize<Dictionary<string, T>>(data) ?? new Dictionary<string, T>();
         return datas;
     }
 
@@ -31,6 +31,12 @@ public class JsonFileStorage<T>
             data,
             new JsonSerializerOptions { WriteIndented = true }
         );
+
+        await File.WriteAllTextAsync(Filepath, json);
+    }
+    public async Task WriteFile(List<T> data)
+    {
+        string json = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true });
 
         await File.WriteAllTextAsync(Filepath, json);
     }
