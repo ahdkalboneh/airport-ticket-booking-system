@@ -34,4 +34,25 @@ public class UserManager
 
         return true;
     }
+
+
+    public bool Login(string username, string password)
+    {
+        username = username.Trim();
+
+        if (string.IsNullOrWhiteSpace(username) ||
+            string.IsNullOrWhiteSpace(password))
+            return false;
+
+        if (!Users.TryGetValue(username, out User? user))
+            return false;
+
+        if (user.Password != password)
+            return false;
+
+        CurrentUser = user;
+
+        return true;
+    }
+
 }

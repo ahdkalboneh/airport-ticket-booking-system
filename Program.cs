@@ -41,25 +41,60 @@ public class Program
         switch (Choice)
         {
             case 1:
-                Console.WriteLine("Enter Username:");
-                string username = Console.ReadLine() ?? "";
-
-                Console.Write("Enter Password: ");
-                string password = Console.ReadLine() ?? "";
-
-                bool registered = await userManager.Register(username, password);
-                if (registered)
                 {
-                    Console.WriteLine($"Welcome {userManager.CurrentUser!.Name}!");
+                    Console.WriteLine("Enter Username:");
+                    string username = Console.ReadLine() ?? "";
+
+                    Console.Write("Enter Password: ");
+                    string password = Console.ReadLine() ?? "";
+
+                    bool registered = await userManager.Register(username, password);
+                    if (registered)
+                    {
+                        Console.WriteLine($"Welcome {userManager.CurrentUser!.Name}!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Username already exists or invalid input.");
+                    }
+                    break;
                 }
-                else
-                {
-                    Console.WriteLine("Username already exists or invalid input.");
-                }
-                break;
 
             case 2:
-                break;
+                {
+                    string username, password;
+                    do
+                    {
+                        Console.Write("Enter Username: ");
+                        username = Console.ReadLine()?.Trim() ?? "";
+
+                        if (string.IsNullOrWhiteSpace(username))
+                            Console.WriteLine("Username cannot be empty!");
+
+                    } while (string.IsNullOrWhiteSpace(username));
+
+                    do
+                    {
+                        Console.Write("Enter Password: ");
+                        password = Console.ReadLine() ?? "";
+
+                        if (string.IsNullOrWhiteSpace(password))
+                            Console.WriteLine("Password cannot be empty!");
+
+                    } while (string.IsNullOrWhiteSpace(password));
+
+                    bool loggedIn = userManager.Login(username, password);
+                    if (loggedIn)
+                    {
+                        Console.WriteLine($"Welcome back, {userManager.CurrentUser!.Name}!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid username or password.");
+                    }
+
+                    break;
+                }
 
             case 3:
                 Console.WriteLine("Available countries:");
