@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using System.Text.Json;
 using AirportTicketBookingSystem.Enums;
 
 public class Program
@@ -15,6 +14,10 @@ public class Program
         "Qatar", "Saudi Arabia", "Lebanon", "Spain", "UAE"};
 
         Console.WriteLine("Welcome to the ticket booking system.");
+
+        JsonFileStorage<User> UserStorage = new JsonFileStorage<User>("Users.json");
+        Dictionary<string, User> Users = new Dictionary<string, User>(await UserStorage.ReadDictionary(), StringComparer.OrdinalIgnoreCase);
+        UserManager userManager = new UserManager(UserStorage, Users);
 
         JsonFileStorage<Flight> Flightstorage = new JsonFileStorage<Flight>("Flights.json");
         List<Flight> Flights = await Flightstorage.ReadFile();
@@ -38,10 +41,25 @@ public class Program
         switch (Choice)
         {
             case 1:
+                Console.WriteLine("Enter Username:");
+                string username = Console.ReadLine() ?? "";
+
+                Console.Write("Enter Password: ");
+                string password = Console.ReadLine() ?? "";
+
+                bool registered = await userManager.Register(username, password);
+                if (registered)
+                {
+                    Console.WriteLine($"Welcome {userManager.CurrentUser!.Name}!");
+                }
+                else
+                {
+                    Console.WriteLine("Username already exists or invalid input.");
+                }
                 break;
 
             case 2:
-            break;
+                break;
 
             case 3:
                 Console.WriteLine("Available countries:");

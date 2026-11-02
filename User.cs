@@ -7,9 +7,9 @@ public class User
     public string Password {get; private set;}
     public Role Role {get; private set;}
 
-    public User(int id, string name, string password, Role role)
+    public User(int userId, string name, string password, Role role)
     {
-        UserId = id;
+        UserId = userId;
         Name = name;
         Password = password;
         Role = role;
