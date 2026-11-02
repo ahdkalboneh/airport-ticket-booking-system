@@ -5,13 +5,7 @@ public class Program
 {
     public static async Task Main(string[] args)
     {
-
-        string DepartureCountry, DestenationCountry, input;
-        DateTime DepartureDate;
         int Choice;
-
-        string[] countries = {"Palestine", "Jordan", "Syria", "Turkey", "Egypt",
-        "Qatar", "Saudi Arabia", "Lebanon", "Spain", "UAE"};
 
         Console.WriteLine("Welcome to the ticket booking system.");
 
@@ -103,57 +97,7 @@ public class Program
                     }
 
                 case 3:
-                    Console.WriteLine("Available countries:");
-                    foreach (var country in countries)
-                    {
-                        Console.WriteLine($"- {country}");
-                    }
-
-                    do
-                    {
-                        Console.WriteLine("Leaving from:");
-                        DepartureCountry = Console.ReadLine()?.Trim() ?? "";
-                        if (!countries.Contains(DepartureCountry, StringComparer.OrdinalIgnoreCase))
-                        {
-                            Console.WriteLine("Invalid country! Please enter a country from the list.");
-                        }
-                    } while (!countries.Contains(DepartureCountry, StringComparer.OrdinalIgnoreCase));
-
-                    do
-                    {
-                        Console.WriteLine("To:");
-                        DestenationCountry = Console.ReadLine()?.Trim() ?? "";
-                        if (!countries.Contains(DestenationCountry, StringComparer.OrdinalIgnoreCase))
-                        {
-                            Console.WriteLine("Invalid country! Please enter a country from the list.");
-                        }
-                        else if (DestenationCountry.Equals(DepartureCountry, StringComparison.OrdinalIgnoreCase))
-                        {
-                            Console.WriteLine("Destination country must be different from departure country.");
-                        }
-                    } while (!countries.Contains(DestenationCountry, StringComparer.OrdinalIgnoreCase)
-                            || DestenationCountry.Equals(DepartureCountry, StringComparison.OrdinalIgnoreCase));
-
-                    while (true)
-                    {
-                        Console.WriteLine("Departure date (dd/MM/yyyy):");
-                        input = Console.ReadLine()?.Trim() ?? "";
-                        if (DateTime.TryParseExact(
-                        input,
-                        "dd/MM/yyyy",
-                        CultureInfo.InvariantCulture,
-                        DateTimeStyles.None,
-                        out DepartureDate))
-                        {
-                            break;
-                        }
-                        Console.WriteLine("Invalid date! Please use dd/MM/yyyy format.");
-                    }
-
-                    List<Flight> FilteredFlights = flightManager.SearchFlights(
-                        DepartureCountry, DestenationCountry, DepartureDate);
-                    flightManager.DisplayFlights(FilteredFlights);
-                    Console.WriteLine("\nTo book a flight, please register or login first.\n");
+                    SearchAndDisplayFlights(flightManager);
 
                     break;
 
@@ -238,23 +182,84 @@ public class Program
                             userManager.CurrentUser!.UserId, flightId, cabinClass);
 
                         Console.WriteLine(booked ? "Flight booked successfully!"
-                            : "Booking failed. Flight not found or cabin class unavailable.");
+                            : "Booking failed. Flight not found or cabin class unavailable or already booked.");
 
                         break;
                     }
 
                 case 2:
+                    SearchAndDisplayFlights(flightManager);
                     break;
 
                 case 3:
+                    bookingsManager.PrintUserBookings(userManager.CurrentUser!.UserId);
                     break;
 
                 case 4:
-                    break;
+                    {
+                        Console.Write("Enter Booking ID to modify: ");
 
+                        if (!int.TryParse(Console.ReadLine(), out int bookingId))
+                        {
+                            Console.WriteLine("Invalid Booking ID.");
+                            break;
+                        }
+
+                        Console.WriteLine("Choose New Cabin Class:");
+                        Console.WriteLine("1. EconomyClass");
+                        Console.WriteLine("2. BusinessClass");
+                        Console.WriteLine("3. FirstClass");
+
+                        if (!int.TryParse(Console.ReadLine(), out int classChoice))
+                        {
+                            Console.WriteLine("Invalid choice.");
+                            break;
+                        }
+
+                        CabinClass newCabinClass;
+
+                        switch (classChoice)
+                        {
+                            case 1:
+                                newCabinClass = CabinClass.EconomyClass;
+                                break;
+                            case 2:
+                                newCabinClass = CabinClass.BusinessClass;
+                                break;
+                            case 3:
+                                newCabinClass = CabinClass.FirstClass;
+                                break;
+                            default:
+                                Console.WriteLine("Invalid cabin class.");
+                                continue;
+                        }
+
+                        bool updated = await bookingsManager.UpdateBooking(
+                            userManager.CurrentUser!.UserId, bookingId, newCabinClass);
+
+                        Console.WriteLine(updated ? "Booking updated successfully!"
+                        : "Booking update failed.");
+
+                        break;
+                    }
                 case 5:
-                    break;
+                    {
+                        Console.Write("Enter Booking ID to cancel: ");
 
+                        if (!int.TryParse(Console.ReadLine(), out int bookingId))
+                        {
+                            Console.WriteLine("Invalid Booking ID.");
+                            break;
+                        }
+
+                        bool cancelled = await bookingsManager
+                        .CancelBooking(userManager.CurrentUser!.UserId, bookingId);
+
+                        Console.WriteLine(cancelled ? "Booking cancelled successfully!"
+                        : "Booking not found.");
+
+                        break;
+                    }
                 case 6:
                     userManager.Logout();
                     loggedIn = false;
@@ -266,5 +271,63 @@ public class Program
             }
         }
     }
+
+    public static void SearchAndDisplayFlights(FlightManager flightManager)
+    {
+
+        string[] countries = {"Palestine", "Jordan", "Syria", "Turkey", "Egypt",
+        "Qatar", "Saudi Arabia", "Lebanon", "Spain", "UAE"};
+        Console.WriteLine("Available countries:");
+        foreach (var country in countries)
+        {
+            Console.WriteLine($"- {country}");
+        }
+
+        string departureCountry, destinationCountry, input;
+        DateTime departureDate;
+
+        do
+        {
+            Console.WriteLine("Leaving from:");
+            departureCountry = Console.ReadLine()?.Trim() ?? "";
+
+            if (!countries.Contains(departureCountry, StringComparer.OrdinalIgnoreCase))
+                Console.WriteLine("Invalid country! Please enter a country from the list.");
+
+        } while (!countries.Contains(departureCountry, StringComparer.OrdinalIgnoreCase));
+
+        do
+        {
+            Console.WriteLine("To:");
+            destinationCountry = Console.ReadLine()?.Trim() ?? "";
+
+            if (!countries.Contains(destinationCountry, StringComparer.OrdinalIgnoreCase))
+                Console.WriteLine("Invalid country! Please enter a country from the list.");
+
+            else if (destinationCountry.Equals(departureCountry, StringComparison.OrdinalIgnoreCase))
+                Console.WriteLine("Destination country must be different from departure country.");
+
+        } while (!countries.Contains(destinationCountry, StringComparer.OrdinalIgnoreCase)
+                 || destinationCountry.Equals(departureCountry, StringComparison.OrdinalIgnoreCase));
+
+        while (true)
+        {
+            Console.WriteLine("Departure date (dd/MM/yyyy):");
+            input = Console.ReadLine()?.Trim() ?? "";
+
+            if (DateTime.TryParseExact(input, "dd/MM/yyyy",
+                CultureInfo.InvariantCulture, DateTimeStyles.None, out departureDate))
+                break;
+
+            Console.WriteLine("Invalid date! Please use dd/MM/yyyy format.");
+        }
+
+        List<Flight> filteredFlights = flightManager.SearchFlights(
+            departureCountry, destinationCountry, departureDate);
+
+        flightManager.DisplayFlights(filteredFlights);
+    }
+
+
 }
 
