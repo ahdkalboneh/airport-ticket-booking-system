@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using AirportTicketBookingSystem.Enums;
+﻿using AirportTicketBookingSystem.Enums;
 
 public class Program
 {
@@ -31,18 +30,15 @@ public class Program
             if (!int.TryParse(Console.ReadLine(), out Choice))
             {
                 Console.WriteLine("Invalid input. Please enter a number from 1 to 4.");
-                Choice = 0;
+                continue;
             }
 
             switch (Choice)
             {
                 case 1:
                     {
-                        Console.WriteLine("Enter Username:");
-                        string username = Console.ReadLine() ?? "";
-
-                        Console.Write("Enter Password: ");
-                        string password = Console.ReadLine() ?? "";
+                        string username = ConsoleInput.ReadRequiredString("Enter Username:");
+                        string password = ConsoleInput.ReadRequiredString("Enter Password:");
 
                         bool registered = await userManager.Register(username, password);
                         if (registered)
@@ -60,32 +56,21 @@ public class Program
 
                 case 2:
                     {
-                        string username, password;
-                        do
-                        {
-                            Console.Write("Enter Username: ");
-                            username = Console.ReadLine()?.Trim() ?? "";
-
-                            if (string.IsNullOrWhiteSpace(username))
-                                Console.WriteLine("Username cannot be empty!");
-
-                        } while (string.IsNullOrWhiteSpace(username));
-
-                        do
-                        {
-                            Console.Write("Enter Password: ");
-                            password = Console.ReadLine() ?? "";
-
-                            if (string.IsNullOrWhiteSpace(password))
-                                Console.WriteLine("Password cannot be empty!");
-
-                        } while (string.IsNullOrWhiteSpace(password));
+                        string username = ConsoleInput.ReadRequiredString("Enter Username:");
+                        string password = ConsoleInput.ReadRequiredString("Enter Password:");
 
                         bool loggedIn = userManager.Login(username, password);
                         if (loggedIn)
                         {
                             Console.WriteLine($"Welcome back, {userManager.CurrentUser!.Name}!");
-                            await RunPassengerMenu(userManager, flightManager, bookingsManager);
+                            if (userManager.CurrentUser.Role == Role.Manager)
+                            {
+                                RunManagerMenu(userManager, bookingsManager);
+                            }
+                            else
+                            {
+                                await RunPassengerMenu(userManager, flightManager, bookingsManager);
+                            }
                         }
                         else
                         {
@@ -141,42 +126,8 @@ public class Program
             {
                 case 1:
                     {
-                        Console.Write("Enter Flight ID to book: ");
-
-                        if (!int.TryParse(Console.ReadLine(), out int flightId))
-                        {
-                            Console.WriteLine("Invalid Flight ID.");
-                            break;
-                        }
-
-                        Console.WriteLine("Choose Cabin Class:");
-                        Console.WriteLine("1. EconomyClass");
-                        Console.WriteLine("2. BusinessClass");
-                        Console.WriteLine("3. FirstClass");
-
-                        if (!int.TryParse(Console.ReadLine(), out int classChoice))
-                        {
-                            Console.WriteLine("Invalid choice.");
-                            break;
-                        }
-
-                        CabinClass cabinClass;
-
-                        switch (classChoice)
-                        {
-                            case 1:
-                                cabinClass = CabinClass.EconomyClass;
-                                break;
-                            case 2:
-                                cabinClass = CabinClass.BusinessClass;
-                                break;
-                            case 3:
-                                cabinClass = CabinClass.FirstClass;
-                                break;
-                            default:
-                                Console.WriteLine("Invalid cabin class.");
-                                continue;
-                        }
+                        int flightId = ConsoleInput.ReadPositiveInt("Enter Flight ID to book: ");
+                        CabinClass cabinClass = ConsoleInput.ReadRequiredCabinClass();
 
                         bool booked = await bookingsManager.CreateBooking(
                             userManager.CurrentUser!.UserId, flightId, cabinClass);
@@ -197,60 +148,20 @@ public class Program
 
                 case 4:
                     {
-                        Console.Write("Enter Booking ID to modify: ");
+                        int bookingId = ConsoleInput.ReadPositiveInt("Enter Booking ID: ");
 
-                        if (!int.TryParse(Console.ReadLine(), out int bookingId))
-                        {
-                            Console.WriteLine("Invalid Booking ID.");
-                            break;
-                        }
+                        CabinClass newCabinClass = ConsoleInput.ReadRequiredCabinClass();
 
-                        Console.WriteLine("Choose New Cabin Class:");
-                        Console.WriteLine("1. EconomyClass");
-                        Console.WriteLine("2. BusinessClass");
-                        Console.WriteLine("3. FirstClass");
+                        bool updated = await bookingsManager.UpdateBooking(userManager.CurrentUser!.UserId,
+                            bookingId, newCabinClass);
 
-                        if (!int.TryParse(Console.ReadLine(), out int classChoice))
-                        {
-                            Console.WriteLine("Invalid choice.");
-                            break;
-                        }
-
-                        CabinClass newCabinClass;
-
-                        switch (classChoice)
-                        {
-                            case 1:
-                                newCabinClass = CabinClass.EconomyClass;
-                                break;
-                            case 2:
-                                newCabinClass = CabinClass.BusinessClass;
-                                break;
-                            case 3:
-                                newCabinClass = CabinClass.FirstClass;
-                                break;
-                            default:
-                                Console.WriteLine("Invalid cabin class.");
-                                continue;
-                        }
-
-                        bool updated = await bookingsManager.UpdateBooking(
-                            userManager.CurrentUser!.UserId, bookingId, newCabinClass);
-
-                        Console.WriteLine(updated ? "Booking updated successfully!"
-                        : "Booking update failed.");
+                        Console.WriteLine(updated ? "Booking updated successfully!" : "Booking update failed.");
 
                         break;
                     }
                 case 5:
                     {
-                        Console.Write("Enter Booking ID to cancel: ");
-
-                        if (!int.TryParse(Console.ReadLine(), out int bookingId))
-                        {
-                            Console.WriteLine("Invalid Booking ID.");
-                            break;
-                        }
+                        int bookingId = ConsoleInput.ReadPositiveInt("Enter Booking ID: ");
 
                         bool cancelled = await bookingsManager
                         .CancelBooking(userManager.CurrentUser!.UserId, bookingId);
@@ -272,62 +183,98 @@ public class Program
         }
     }
 
+    static void RunManagerMenu(UserManager userManager, BookingsManager bookingsManager)
+    {
+        while (true)
+        {
+            Console.WriteLine("-- Manager Menu --");
+            Console.WriteLine("1. Search Bookings");
+            Console.WriteLine("2. Logout");
+            Console.Write("Choose an option:");
+
+            string choice = Console.ReadLine()?.Trim() ?? "";
+
+            switch (choice)
+            {
+                case "1":
+                    SearchAndDisplayBookings(bookingsManager);
+                    break;
+
+                case "2":
+                    userManager.Logout();
+                    return;
+
+                default:
+                    Console.WriteLine("Invalid choice!");
+                    break;
+            }
+        }
+    }
+
     public static void SearchAndDisplayFlights(FlightManager flightManager)
     {
 
-        string[] countries = {"Palestine", "Jordan", "Syria", "Turkey", "Egypt",
-        "Qatar", "Saudi Arabia", "Lebanon", "Spain", "UAE"};
-        Console.WriteLine("Available countries:");
-        foreach (var country in countries)
-        {
-            Console.WriteLine($"- {country}");
-        }
-
-        string departureCountry, destinationCountry, input;
-        DateTime departureDate;
+        ConsoleInput.DisplayAvailableCountries();
+        string departureCountry = ConsoleInput.ReadRequiredCountry("Leaving from: ");
+        string destinationCountry;
 
         do
         {
-            Console.WriteLine("Leaving from:");
-            departureCountry = Console.ReadLine()?.Trim() ?? "";
+            destinationCountry =
+                ConsoleInput.ReadRequiredCountry("To: ");
 
-            if (!countries.Contains(departureCountry, StringComparer.OrdinalIgnoreCase))
-                Console.WriteLine("Invalid country! Please enter a country from the list.");
+            if (destinationCountry.Equals(
+                departureCountry, StringComparison.OrdinalIgnoreCase))
+            {
+                Console.WriteLine("Destination must differ from departure country.");
+            }
 
-        } while (!countries.Contains(departureCountry, StringComparer.OrdinalIgnoreCase));
+        } while (destinationCountry.Equals(departureCountry, StringComparison.OrdinalIgnoreCase));
 
-        do
+
+        var criteria = new FlightSearchCriteria
         {
-            Console.WriteLine("To:");
-            destinationCountry = Console.ReadLine()?.Trim() ?? "";
+            DepartureCountry = departureCountry,
+            DestinationCountry = destinationCountry,
+            DepartureDate = ConsoleInput.ReadOptionalDate("Departure Date (Format -> dd/mm/yyyy, press enter to skip)"),
+            MaxPrice = ConsoleInput.ReadOptionalPrice("Maximum Price (Enter to skip):"),
+            DepartureAirport = ConsoleInput.ReadOptionalString("Departure Airport (Enter to skip):"),
+            ArrivalAirport = ConsoleInput.ReadOptionalString("Arrival Airport (Enter to skip):"),
+            CabinClass = ConsoleInput.ReadOptionalCabinClass(),
+        };
 
-            if (!countries.Contains(destinationCountry, StringComparer.OrdinalIgnoreCase))
-                Console.WriteLine("Invalid country! Please enter a country from the list.");
-
-            else if (destinationCountry.Equals(departureCountry, StringComparison.OrdinalIgnoreCase))
-                Console.WriteLine("Destination country must be different from departure country.");
-
-        } while (!countries.Contains(destinationCountry, StringComparer.OrdinalIgnoreCase)
-                 || destinationCountry.Equals(departureCountry, StringComparison.OrdinalIgnoreCase));
-
-        while (true)
-        {
-            Console.WriteLine("Departure date (dd/MM/yyyy):");
-            input = Console.ReadLine()?.Trim() ?? "";
-
-            if (DateTime.TryParseExact(input, "dd/MM/yyyy",
-                CultureInfo.InvariantCulture, DateTimeStyles.None, out departureDate))
-                break;
-
-            Console.WriteLine("Invalid date! Please use dd/MM/yyyy format.");
-        }
-
-        List<Flight> filteredFlights = flightManager.SearchFlights(
-            departureCountry, destinationCountry, departureDate);
-
+        List<Flight> filteredFlights = flightManager.SearchFlights(criteria);
+        Console.WriteLine("\nSearch Results:");
         flightManager.DisplayFlights(filteredFlights);
     }
 
+    static void SearchAndDisplayBookings(BookingsManager bookingsManager)
+    {
+        Console.WriteLine("\n--- Search Bookings ---");
 
+        var criteria = new BookingSearchCriteria
+        {
+            FlightId = ConsoleInput.ReadOptionalPositiveInt("Flight ID (Enter to skip): "),
+            PassengerId = ConsoleInput.ReadOptionalPositiveInt("Passenger ID (Enter to skip): "),
+            DepartureCountry = ConsoleInput.ReadOptionalCountry("Departure Country (Enter to skip): "),
+            DestinationCountry = ConsoleInput.ReadOptionalCountry("Destination Country (Enter to skip): "),
+            DepartureDate = ConsoleInput.ReadOptionalDate("Departure Date (dd/MM/yyyy, Enter to skip): "),
+            DepartureAirport = ConsoleInput.ReadOptionalString("Departure Airport (Enter to skip): "),
+            ArrivalAirport = ConsoleInput.ReadOptionalString("Arrival Airport (Enter to skip): "),
+            CabinClass = ConsoleInput.ReadOptionalCabinClass(),
+            MaxPrice = ConsoleInput.ReadOptionalPrice("Maximum Price (Enter to skip): ")
+        };
+
+        List<Booking> results = bookingsManager.SearchBookings(criteria);
+
+        if (results.Count == 0)
+        {
+            Console.WriteLine("No bookings found matching your search criteria.");
+            return;
+        }
+
+        Console.WriteLine($"Found {results.Count} booking(s):");
+        bookingsManager.DisplayBookings(results);
+    }
 }
 

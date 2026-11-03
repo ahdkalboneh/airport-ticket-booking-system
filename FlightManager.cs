@@ -9,12 +9,19 @@ public class FlightManager
         Flights = flights;
     }
 
-    public List<Flight> SearchFlights(string departureCountry, string destinationCountry, DateTime departureDate)
+    public List<Flight> SearchFlights(FlightSearchCriteria criteria)
     {
         return Flights.Where(flight =>
-            string.Equals(flight.DepartureCountry, departureCountry, StringComparison.OrdinalIgnoreCase)
-            && string.Equals(flight.DestinationCountry, destinationCountry, StringComparison.OrdinalIgnoreCase)
-            && flight.DepartureDate.Date == departureDate.Date
+            string.Equals(flight.DepartureCountry, criteria.DepartureCountry, StringComparison.OrdinalIgnoreCase)
+            && string.Equals(flight.DestinationCountry, criteria.DestinationCountry, StringComparison.OrdinalIgnoreCase)
+            && (criteria.DepartureDate == null || flight.DepartureDate.Date == criteria.DepartureDate.Value.Date)
+            && (string.IsNullOrWhiteSpace(criteria.DepartureAirport) ||
+            string.Equals(flight.DepartureAirport, criteria.DepartureAirport, StringComparison.OrdinalIgnoreCase))
+            && (string.IsNullOrWhiteSpace(criteria.ArrivalAirport) ||
+            string.Equals(flight.ArrivalAirport, criteria.ArrivalAirport, StringComparison.OrdinalIgnoreCase))
+            && (criteria.CabinClass == null || flight.Prices.ContainsKey(criteria.CabinClass.Value))
+            && (criteria.MaxPrice == null || (criteria.CabinClass != null ? flight.Prices.TryGetValue(criteria.CabinClass.Value, out decimal price)
+            && price <= criteria.MaxPrice.Value : flight.Prices.Values.Any(price => price <= criteria.MaxPrice.Value)))
         ).ToList();
     }
 

@@ -1,14 +1,14 @@
 {
-  "ahd kalboneh": {
+  "admin": {
     "UserId": 1,
-    "Name": "ahd kalboneh",
-    "Password": "123456",
-    "Role": 0
+    "Name": "admin",
+    "Password": "admin",
+    "Role": 1
   },
-  "waleed": {
+  "Ahd Kalboneh": {
     "UserId": 2,
-    "Name": "waleed",
-    "Password": "123",
+    "Name": "Ahd Kalboneh",
+    "Password": "123456",
     "Role": 0
   }
 }
