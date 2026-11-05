@@ -2,22 +2,6 @@ using System.Globalization;
 using AirportTicketBookingSystem.Enums;
 public static class ConsoleInput
 {
-    private static readonly string[] Countries =
-    {
-        "Palestine", "Jordan", "Syria", "Turkey", "Egypt",
-        "Qatar", "Saudi Arabia", "Lebanon", "Spain", "UAE", "Germany"
-    };
-
-    public static void DisplayAvailableCountries()
-    {
-        Console.WriteLine("\nAvailable countries:");
-
-        foreach (var country in Countries)
-        {
-            Console.WriteLine($"- {country}");
-        }
-    }
-
     public static string ReadRequiredString(string prompt)
     {
         while (true)
@@ -93,23 +77,11 @@ public static class ConsoleInput
 
     public static string? ReadOptionalCountry(string prompt)
     {
-        while (true)
-        {
-            Console.Write(prompt);
-            string input = Console.ReadLine()?.Trim() ?? "";
 
-            if (string.IsNullOrWhiteSpace(input))
-                return null;
+        Console.Write(prompt);
+        string input = Console.ReadLine()?.Trim() ?? "";
+        return string.IsNullOrWhiteSpace(input) ? null : input;
 
-            string? country = Countries.FirstOrDefault(c =>
-                c.Equals(input, StringComparison.OrdinalIgnoreCase));
-
-            if (country != null)
-                return country;
-
-            Console.WriteLine("Invalid country! Please choose from the available countries.");
-            DisplayAvailableCountries();
-        }
     }
 
     public static string ReadRequiredCountry(string prompt)
@@ -200,6 +172,20 @@ public static class ConsoleInput
                     Console.WriteLine("Invalid cabin class!");
                     break;
             }
+        }
+    }
+
+    public static string ReadRequiredFilePath(string prompt)
+    {
+        while (true)
+        {
+            Console.Write(prompt);
+            string path = Console.ReadLine()?.Trim().Trim('"') ?? "";
+
+            if (!string.IsNullOrWhiteSpace(path))
+                return path;
+
+            Console.WriteLine("File path cannot be empty.");
         }
     }
 }

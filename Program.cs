@@ -65,7 +65,7 @@ public class Program
                             Console.WriteLine($"Welcome back, {userManager.CurrentUser!.Name}!");
                             if (userManager.CurrentUser.Role == Role.Manager)
                             {
-                                RunManagerMenu(userManager, bookingsManager);
+                                await RunManagerMenu(userManager, bookingsManager, flightManager, Flightstorage);
                             }
                             else
                             {
@@ -183,13 +183,17 @@ public class Program
         }
     }
 
-    static void RunManagerMenu(UserManager userManager, BookingsManager bookingsManager)
+    static async Task RunManagerMenu(UserManager userManager, BookingsManager bookingsManager,
+                                FlightManager flightManager, JsonFileStorage<Flight> Flightstorage)
     {
         while (true)
         {
             Console.WriteLine("-- Manager Menu --");
             Console.WriteLine("1. Search Bookings");
-            Console.WriteLine("2. Logout");
+            Console.WriteLine("2. Batch Flight Upload");
+            Console.WriteLine("3. Flight Validation Details");
+            Console.WriteLine("4. Logout");
+
             Console.Write("Choose an option:");
 
             string choice = Console.ReadLine()?.Trim() ?? "";
@@ -201,6 +205,17 @@ public class Program
                     break;
 
                 case "2":
+                    string filePath = ConsoleInput.ReadRequiredFilePath("Enter CSV file path:");
+                    await flightManager.ImportFlightsFromCsv(filePath, Flightstorage);
+                    break;
+
+                case "3":
+                    ModelValidationDetails validationService = new();
+                    validationService.DisplayValidationDetails();
+
+                    break;
+
+                case "4":
                     userManager.Logout();
                     return;
 
@@ -214,7 +229,6 @@ public class Program
     public static void SearchAndDisplayFlights(FlightManager flightManager)
     {
 
-        ConsoleInput.DisplayAvailableCountries();
         string departureCountry = ConsoleInput.ReadRequiredCountry("Leaving from: ");
         string destinationCountry;
 
