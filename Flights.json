@@ -1,0 +1,652 @@
+[
+  {
+    "FlightId": 1,
+    "DepartureCountry": "Palestine",
+    "DestinationCountry": "Turkey",
+    "DepartureDate": "2026-12-15T10:00:00",
+    "DepartureAirport": "Palestine Gateway International Airport",
+    "ArrivalAirport": "Istanbul Airport",
+    "Prices": {
+      "EconomyClass": 200,
+      "BusinessClass": 500,
+      "FirstClass": 1000
+    }
+  },
+  {
+    "FlightId": 2,
+    "DepartureCountry": "Jordan",
+    "DestinationCountry": "Germany",
+    "DepartureDate": "2026-12-20T14:30:00",
+    "DepartureAirport": "Queen Alia International Airport",
+    "ArrivalAirport": "Frankfurt Airport",
+    "Prices": {
+      "EconomyClass": 350,
+      "BusinessClass": 800,
+      "FirstClass": 1500
+    }
+  },
+  {
+    "FlightId": 3,
+    "DepartureCountry": "Turkey",
+    "DestinationCountry": "Spain",
+    "DepartureDate": "2026-12-25T08:15:00",
+    "DepartureAirport": "Istanbul Airport",
+    "ArrivalAirport": "Madrid-Barajas Airport",
+    "Prices": {
+      "EconomyClass": 180,
+      "BusinessClass": 450,
+      "FirstClass": 900
+    }
+  },
+  {
+    "FlightId": 4,
+    "DepartureCountry": "Egypt",
+    "DestinationCountry": "Saudi Arabia",
+    "DepartureDate": "2027-01-05T22:00:00",
+    "DepartureAirport": "Cairo International Airport",
+    "ArrivalAirport": "King Abdulaziz International Airport",
+    "Prices": {
+      "EconomyClass": 150,
+      "BusinessClass": 400,
+      "FirstClass": 750
+    }
+  },
+  {
+    "FlightId": 5,
+    "DepartureCountry": "Qatar",
+    "DestinationCountry": "Lebanon",
+    "DepartureDate": "2027-01-10T16:45:00",
+    "DepartureAirport": "Hamad International Airport",
+    "ArrivalAirport": "Beirut-Rafic Hariri International Airport",
+    "Prices": {
+      "EconomyClass": 220,
+      "BusinessClass": 550,
+      "FirstClass": 1100
+    }
+  },
+  {
+    "FlightId": 6,
+    "DepartureCountry": "Palestine",
+    "DestinationCountry": "Egypt",
+    "DepartureDate": "2027-01-15T11:30:00",
+    "DepartureAirport": "Palestine Gateway International Airport",
+    "ArrivalAirport": "Cairo International Airport",
+    "Prices": {
+      "EconomyClass": 120,
+      "BusinessClass": 300,
+      "FirstClass": 600
+    }
+  },
+  {
+    "FlightId": 7,
+    "DepartureCountry": "UAE",
+    "DestinationCountry": "Jordan",
+    "DepartureDate": "2027-01-20T06:00:00",
+    "DepartureAirport": "Dubai International Airport",
+    "ArrivalAirport": "Queen Alia International Airport",
+    "Prices": {
+      "EconomyClass": 190,
+      "BusinessClass": 480,
+      "FirstClass": 950
+    }
+  },
+  {
+    "FlightId": 8,
+    "DepartureCountry": "Saudi Arabia",
+    "DestinationCountry": "Palestine",
+    "DepartureDate": "2027-01-25T19:20:00",
+    "DepartureAirport": "King Khalid International Airport",
+    "ArrivalAirport": "Palestine Gateway International Airport",
+    "Prices": {
+      "EconomyClass": 160,
+      "BusinessClass": 420,
+      "FirstClass": 850
+    }
+  },
+  {
+    "FlightId": 9,
+    "DepartureCountry": "Jordan",
+    "DestinationCountry": "Egypt",
+    "DepartureDate": "2027-02-02T09:00:00",
+    "DepartureAirport": "Queen Alia International Airport",
+    "ArrivalAirport": "Cairo International Airport",
+    "Prices": {
+      "EconomyClass": 130,
+      "BusinessClass": 320,
+      "FirstClass": 700
+    }
+  },
+  {
+    "FlightId": 10,
+    "DepartureCountry": "Syria",
+    "DestinationCountry": "Turkey",
+    "DepartureDate": "2027-02-05T12:30:00",
+    "DepartureAirport": "Damascus International Airport",
+    "ArrivalAirport": "Istanbul Airport",
+    "Prices": {
+      "EconomyClass": 170,
+      "BusinessClass": 390,
+      "FirstClass": 800
+    }
+  },
+  {
+    "FlightId": 11,
+    "DepartureCountry": "Spain",
+    "DestinationCountry": "UAE",
+    "DepartureDate": "2027-02-08T15:45:00",
+    "DepartureAirport": "Madrid-Barajas Airport",
+    "ArrivalAirport": "Dubai International Airport",
+    "Prices": {
+      "EconomyClass": 420,
+      "BusinessClass": 950,
+      "FirstClass": 1800
+    }
+  },
+  {
+    "FlightId": 12,
+    "DepartureCountry": "Lebanon",
+    "DestinationCountry": "Qatar",
+    "DepartureDate": "2027-02-12T07:20:00",
+    "DepartureAirport": "Beirut-Rafic Hariri International Airport",
+    "ArrivalAirport": "Hamad International Airport",
+    "Prices": {
+      "EconomyClass": 210,
+      "BusinessClass": 490,
+      "FirstClass": 950
+    }
+  },
+  {
+    "FlightId": 13,
+    "DepartureCountry": "Turkey",
+    "DestinationCountry": "Jordan",
+    "DepartureDate": "2027-02-15T18:00:00",
+    "DepartureAirport": "Istanbul Airport",
+    "ArrivalAirport": "Queen Alia International Airport",
+    "Prices": {
+      "EconomyClass": 160,
+      "BusinessClass": 380,
+      "FirstClass": 780
+    }
+  },
+  {
+    "FlightId": 14,
+    "DepartureCountry": "Egypt",
+    "DestinationCountry": "Palestine",
+    "DepartureDate": "2027-02-18T10:15:00",
+    "DepartureAirport": "Cairo International Airport",
+    "ArrivalAirport": "Palestine Gateway International Airport",
+    "Prices": {
+      "EconomyClass": 140,
+      "BusinessClass": 350,
+      "FirstClass": 720
+    }
+  },
+  {
+    "FlightId": 15,
+    "DepartureCountry": "Saudi Arabia",
+    "DestinationCountry": "Qatar",
+    "DepartureDate": "2027-02-22T21:00:00",
+    "DepartureAirport": "King Abdulaziz International Airport",
+    "ArrivalAirport": "Hamad International Airport",
+    "Prices": {
+      "EconomyClass": 180,
+      "BusinessClass": 430,
+      "FirstClass": 900
+    }
+  },
+  {
+    "FlightId": 16,
+    "DepartureCountry": "UAE",
+    "DestinationCountry": "Spain",
+    "DepartureDate": "2027-02-25T04:30:00",
+    "DepartureAirport": "Abu Dhabi International Airport",
+    "ArrivalAirport": "Barcelona-El Prat Airport",
+    "Prices": {
+      "EconomyClass": 390,
+      "BusinessClass": 850,
+      "FirstClass": 1700
+    }
+  },
+  {
+    "FlightId": 17,
+    "DepartureCountry": "Palestine",
+    "DestinationCountry": "Jordan",
+    "DepartureDate": "2027-03-01T08:00:00",
+    "DepartureAirport": "Palestine Gateway International Airport",
+    "ArrivalAirport": "Queen Alia International Airport",
+    "Prices": {
+      "EconomyClass": 90,
+      "BusinessClass": 200,
+      "FirstClass": 450
+    }
+  },
+  {
+    "FlightId": 18,
+    "DepartureCountry": "Jordan",
+    "DestinationCountry": "Saudi Arabia",
+    "DepartureDate": "2027-03-04T13:20:00",
+    "DepartureAirport": "Queen Alia International Airport",
+    "ArrivalAirport": "King Khalid International Airport",
+    "Prices": {
+      "EconomyClass": 200,
+      "BusinessClass": 470,
+      "FirstClass": 920
+    }
+  },
+  {
+    "FlightId": 19,
+    "DepartureCountry": "Turkey",
+    "DestinationCountry": "Egypt",
+    "DepartureDate": "2027-03-07T06:45:00",
+    "DepartureAirport": "Antalya Airport",
+    "ArrivalAirport": "Cairo International Airport",
+    "Prices": {
+      "EconomyClass": 190,
+      "BusinessClass": 460,
+      "FirstClass": 950
+    }
+  },
+  {
+    "FlightId": 20,
+    "DepartureCountry": "Qatar",
+    "DestinationCountry": "UAE",
+    "DepartureDate": "2027-03-10T17:30:00",
+    "DepartureAirport": "Hamad International Airport",
+    "ArrivalAirport": "Dubai International Airport",
+    "Prices": {
+      "EconomyClass": 110,
+      "BusinessClass": 280,
+      "FirstClass": 600
+    }
+  },
+  {
+    "FlightId": 21,
+    "DepartureCountry": "Spain",
+    "DestinationCountry": "Turkey",
+    "DepartureDate": "2027-03-13T11:00:00",
+    "DepartureAirport": "Barcelona-El Prat Airport",
+    "ArrivalAirport": "Istanbul Airport",
+    "Prices": {
+      "EconomyClass": 250,
+      "BusinessClass": 570,
+      "FirstClass": 1150
+    }
+  },
+  {
+    "FlightId": 22,
+    "DepartureCountry": "Lebanon",
+    "DestinationCountry": "Jordan",
+    "DepartureDate": "2027-03-16T09:40:00",
+    "DepartureAirport": "Beirut-Rafic Hariri International Airport",
+    "ArrivalAirport": "Queen Alia International Airport",
+    "Prices": {
+      "EconomyClass": 100,
+      "BusinessClass": 260,
+      "FirstClass": 550
+    }
+  },
+  {
+    "FlightId": 23,
+    "DepartureCountry": "Egypt",
+    "DestinationCountry": "Spain",
+    "DepartureDate": "2027-03-19T23:10:00",
+    "DepartureAirport": "Cairo International Airport",
+    "ArrivalAirport": "Madrid-Barajas Airport",
+    "Prices": {
+      "EconomyClass": 310,
+      "BusinessClass": 720,
+      "FirstClass": 1400
+    }
+  },
+  {
+    "FlightId": 24,
+    "DepartureCountry": "Syria",
+    "DestinationCountry": "Lebanon",
+    "DepartureDate": "2027-03-22T14:00:00",
+    "DepartureAirport": "Damascus International Airport",
+    "ArrivalAirport": "Beirut-Rafic Hariri International Airport",
+    "Prices": {
+      "EconomyClass": 95,
+      "BusinessClass": 230,
+      "FirstClass": 500
+    }
+  },
+  {
+    "FlightId": 25,
+    "DepartureCountry": "Saudi Arabia",
+    "DestinationCountry": "Turkey",
+    "DepartureDate": "2027-03-25T05:50:00",
+    "DepartureAirport": "King Abdulaziz International Airport",
+    "ArrivalAirport": "Istanbul Airport",
+    "Prices": {
+      "EconomyClass": 280,
+      "BusinessClass": 650,
+      "FirstClass": 1300
+    }
+  },
+  {
+    "FlightId": 26,
+    "DepartureCountry": "UAE",
+    "DestinationCountry": "Egypt",
+    "DepartureDate": "2027-03-28T16:20:00",
+    "DepartureAirport": "Dubai International Airport",
+    "ArrivalAirport": "Cairo International Airport",
+    "Prices": {
+      "EconomyClass": 230,
+      "BusinessClass": 520,
+      "FirstClass": 1050
+    }
+  },
+  {
+    "FlightId": 27,
+    "DepartureCountry": "Jordan",
+    "DestinationCountry": "Palestine",
+    "DepartureDate": "2027-04-02T07:30:00",
+    "DepartureAirport": "Queen Alia International Airport",
+    "ArrivalAirport": "Palestine Gateway International Airport",
+    "Prices": {
+      "EconomyClass": 85,
+      "BusinessClass": 190,
+      "FirstClass": 420
+    }
+  },
+  {
+    "FlightId": 28,
+    "DepartureCountry": "Turkey",
+    "DestinationCountry": "Qatar",
+    "DepartureDate": "2027-04-06T12:10:00",
+    "DepartureAirport": "Istanbul Airport",
+    "ArrivalAirport": "Hamad International Airport",
+    "Prices": {
+      "EconomyClass": 240,
+      "BusinessClass": 560,
+      "FirstClass": 1100
+    }
+  },
+  {
+    "FlightId": 29,
+    "DepartureCountry": "Spain",
+    "DestinationCountry": "Lebanon",
+    "DepartureDate": "2027-04-10T20:45:00",
+    "DepartureAirport": "Madrid-Barajas Airport",
+    "ArrivalAirport": "Beirut-Rafic Hariri International Airport",
+    "Prices": {
+      "EconomyClass": 330,
+      "BusinessClass": 740,
+      "FirstClass": 1450
+    }
+  },
+  {
+    "FlightId": 30,
+    "DepartureCountry": "Qatar",
+    "DestinationCountry": "Saudi Arabia",
+    "DepartureDate": "2027-04-15T09:25:00",
+    "DepartureAirport": "Hamad International Airport",
+    "ArrivalAirport": "King Abdulaziz International Airport",
+    "Prices": {
+      "EconomyClass": 140,
+      "BusinessClass": 330,
+      "FirstClass": 680
+    }
+  },
+  {
+    "FlightId": 31,
+    "DepartureCountry": "Palestine",
+    "DestinationCountry": "Turkey",
+    "DepartureDate": "2027-01-05T08:30:00",
+    "DepartureAirport": "Palestine Gateway International Airport",
+    "ArrivalAirport": "Istanbul Airport",
+    "Prices": {
+      "EconomyClass": 180,
+      "BusinessClass": 480,
+      "FirstClass": 950
+    }
+  },
+  {
+    "FlightId": 32,
+    "DepartureCountry": "Palestine",
+    "DestinationCountry": "Turkey",
+    "DepartureDate": "2027-01-05T18:30:00",
+    "DepartureAirport": "Palestine Gateway International Airport",
+    "ArrivalAirport": "Istanbul Airport",
+    "Prices": {
+      "EconomyClass": 250,
+      "BusinessClass": 520,
+      "FirstClass": 1050
+    }
+  },
+  {
+    "FlightId": 33,
+    "DepartureCountry": "Palestine",
+    "DestinationCountry": "Turkey",
+    "DepartureDate": "2027-02-15T12:00:00",
+    "DepartureAirport": "Palestine Gateway International Airport",
+    "ArrivalAirport": "Antalya Airport",
+    "Prices": {
+      "EconomyClass": 210,
+      "BusinessClass": 490,
+      "FirstClass": 980
+    }
+  },
+  {
+    "FlightId": 34,
+    "DepartureCountry": "Jordan",
+    "DestinationCountry": "Egypt",
+    "DepartureDate": "2027-02-02T16:00:00",
+    "DepartureAirport": "Queen Alia International Airport",
+    "ArrivalAirport": "Cairo International Airport",
+    "Prices": {
+      "EconomyClass": 120,
+      "BusinessClass": 310,
+      "FirstClass": 650
+    }
+  },
+  {
+    "FlightId": 35,
+    "DepartureCountry": "Jordan",
+    "DestinationCountry": "Egypt",
+    "DepartureDate": "2027-03-10T09:30:00",
+    "DepartureAirport": "Queen Alia International Airport",
+    "ArrivalAirport": "Alexandria International Airport",
+    "Prices": {
+      "EconomyClass": 160,
+      "BusinessClass": 370,
+      "FirstClass": 720
+    }
+  },
+  {
+    "FlightId": 36,
+    "DepartureCountry": "Turkey",
+    "DestinationCountry": "Spain",
+    "DepartureDate": "2027-01-20T07:00:00",
+    "DepartureAirport": "Istanbul Airport",
+    "ArrivalAirport": "Madrid-Barajas Airport",
+    "Prices": {
+      "EconomyClass": 190,
+      "BusinessClass": 460,
+      "FirstClass": 920
+    }
+  },
+  {
+    "FlightId": 37,
+    "DepartureCountry": "Turkey",
+    "DestinationCountry": "Spain",
+    "DepartureDate": "2027-01-20T19:00:00",
+    "DepartureAirport": "Antalya Airport",
+    "ArrivalAirport": "Barcelona-El Prat Airport",
+    "Prices": {
+      "EconomyClass": 230,
+      "BusinessClass": 510,
+      "FirstClass": 1000
+    }
+  },
+  {
+    "FlightId": 38,
+    "DepartureCountry": "Egypt",
+    "DestinationCountry": "Saudi Arabia",
+    "DepartureDate": "2027-01-05T11:00:00",
+    "DepartureAirport": "Cairo International Airport",
+    "ArrivalAirport": "King Abdulaziz International Airport",
+    "Prices": {
+      "EconomyClass": 140,
+      "BusinessClass": 390,
+      "FirstClass": 760
+    }
+  },
+  {
+    "FlightId": 39,
+    "DepartureCountry": "Egypt",
+    "DestinationCountry": "Saudi Arabia",
+    "DepartureDate": "2027-02-05T22:00:00",
+    "DepartureAirport": "Alexandria International Airport",
+    "ArrivalAirport": "King Khalid International Airport",
+    "Prices": {
+      "EconomyClass": 170,
+      "BusinessClass": 420,
+      "FirstClass": 800
+    }
+  },
+  {
+    "FlightId": 40,
+    "DepartureCountry": "Qatar",
+    "DestinationCountry": "Lebanon",
+    "DepartureDate": "2027-01-10T16:45:00",
+    "DepartureAirport": "Hamad International Airport",
+    "ArrivalAirport": "Beirut-Rafic Hariri International Airport",
+    "Prices": {
+      "EconomyClass": 200,
+      "BusinessClass": 530,
+      "FirstClass": 1080
+    }
+  },
+  {
+    "FlightId": 41,
+    "DepartureCountry": "Qatar",
+    "DestinationCountry": "UAE",
+    "DepartureDate": "2027-03-10T17:30:00",
+    "DepartureAirport": "Hamad International Airport",
+    "ArrivalAirport": "Dubai International Airport",
+    "Prices": {
+      "EconomyClass": 105,
+      "BusinessClass": 270,
+      "FirstClass": 580
+    }
+  },
+  {
+    "FlightId": 42,
+    "DepartureCountry": "UAE",
+    "DestinationCountry": "Jordan",
+    "DepartureDate": "2027-01-20T06:00:00",
+    "DepartureAirport": "Dubai International Airport",
+    "ArrivalAirport": "Queen Alia International Airport",
+    "Prices": {
+      "EconomyClass": 200,
+      "BusinessClass": 500,
+      "FirstClass": 980
+    }
+  },
+  {
+    "FlightId": 43,
+    "DepartureCountry": "UAE",
+    "DestinationCountry": "Egypt",
+    "DepartureDate": "2027-02-10T13:15:00",
+    "DepartureAirport": "Abu Dhabi International Airport",
+    "ArrivalAirport": "Cairo International Airport",
+    "Prices": {
+      "EconomyClass": 220,
+      "BusinessClass": 490,
+      "FirstClass": 970
+    }
+  },
+  {
+    "FlightId": 44,
+    "DepartureCountry": "Saudi Arabia",
+    "DestinationCountry": "Palestine",
+    "DepartureDate": "2027-01-25T19:20:00",
+    "DepartureAirport": "King Khalid International Airport",
+    "ArrivalAirport": "Palestine Gateway International Airport",
+    "Prices": {
+      "EconomyClass": 155,
+      "BusinessClass": 410,
+      "FirstClass": 820
+    }
+  },
+  {
+    "FlightId": 45,
+    "DepartureCountry": "Lebanon",
+    "DestinationCountry": "Jordan",
+    "DepartureDate": "2027-03-16T09:40:00",
+    "DepartureAirport": "Beirut-Rafic Hariri International Airport",
+    "ArrivalAirport": "Queen Alia International Airport",
+    "Prices": {
+      "EconomyClass": 110,
+      "BusinessClass": 250,
+      "FirstClass": 530
+    }
+  },
+  {
+    "FlightId": 46,
+    "DepartureCountry": "Syria",
+    "DestinationCountry": "Turkey",
+    "DepartureDate": "2027-02-05T12:30:00",
+    "DepartureAirport": "Damascus International Airport",
+    "ArrivalAirport": "Istanbul Airport",
+    "Prices": {
+      "EconomyClass": 160,
+      "BusinessClass": 380,
+      "FirstClass": 790
+    }
+  },
+  {
+    "FlightId": 47,
+    "DepartureCountry": "Spain",
+    "DestinationCountry": "UAE",
+    "DepartureDate": "2027-02-08T15:45:00",
+    "DepartureAirport": "Madrid-Barajas Airport",
+    "ArrivalAirport": "Dubai International Airport",
+    "Prices": {
+      "EconomyClass": 400,
+      "BusinessClass": 900,
+      "FirstClass": 1750
+    }
+  },
+  {
+    "FlightId": 48,
+    "DepartureCountry": "Spain",
+    "DestinationCountry": "Turkey",
+    "DepartureDate": "2027-03-13T11:00:00",
+    "DepartureAirport": "Barcelona-El Prat Airport",
+    "ArrivalAirport": "Istanbul Airport",
+    "Prices": {
+      "EconomyClass": 260,
+      "BusinessClass": 590,
+      "FirstClass": 1180
+    }
+  },
+  {
+    "FlightId": 49,
+    "DepartureCountry": "Jordan",
+    "DestinationCountry": "Palestine",
+    "DepartureDate": "2027-04-02T07:30:00",
+    "DepartureAirport": "Queen Alia International Airport",
+    "ArrivalAirport": "Palestine Gateway International Airport",
+    "Prices": {
+      "EconomyClass": 90,
+      "BusinessClass": 200,
+      "FirstClass": 450
+    }
+  },
+  {
+    "FlightId": 50,
+    "DepartureCountry": "Egypt",
+    "DestinationCountry": "Palestine",
+    "DepartureDate": "2027-03-18T10:15:00",
+    "DepartureAirport": "Cairo International Airport",
+    "ArrivalAirport": "Palestine Gateway International Airport",
+    "Prices": {
+      "EconomyClass": 125,
+      "BusinessClass": 320,
+      "FirstClass": 650
+    }
+  }
+]

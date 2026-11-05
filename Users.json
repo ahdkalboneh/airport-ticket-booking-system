@@ -1,0 +1,14 @@
+{
+  "admin": {
+    "UserId": 1,
+    "Name": "admin",
+    "Password": "admin",
+    "Role": 1
+  },
+  "Ahd Kalboneh": {
+    "UserId": 2,
+    "Name": "Ahd Kalboneh",
+    "Password": "123456",
+    "Role": 0
+  }
+}
